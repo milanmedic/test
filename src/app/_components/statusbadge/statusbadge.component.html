@@ -1,0 +1,9 @@
+<div class="status-badge"
+  [ngClass]="{
+    'status-approved': status === 'Approved',
+    'status-progress': status === 'In Progress',
+    'status-rejected': status === 'Rejected'
+  }"
+>
+  {{ status }}
+</div>

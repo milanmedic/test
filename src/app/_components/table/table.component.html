@@ -1,0 +1,54 @@
+<div class="container">
+  <table class="app-table">
+    <thead class="table-header">
+      <tr class="header-row">
+        <th class="header-instance">
+          Date
+        </th>
+        <th class="header-instance">
+          Title
+        </th>
+        <th class="header-instance">
+          Business Unit
+        </th>
+        <th class="header-instance">
+          With User
+        </th>
+        <th class="header-instance">
+          Delay
+        </th>
+        <th class="header-instance">
+          Status
+        </th>
+      </tr>
+    </thead>
+    <tbody class="table-body">
+      <tr class="data-row" *ngFor="let dataInstance of data">
+        <td class="data-column date-column"
+          [ngClass]="{
+            'date-column-approved': dataInstance.status === 'Approved',
+            'date-column-progress': dataInstance.status === 'In Progress',
+            'date-column-rejected': dataInstance.status === 'Rejected'
+          }"
+        >
+          {{ dataInstance.date }}
+        </td>
+        <td class="data-column">
+          {{ dataInstance.title }}
+        </td>
+        <td class="data-column">
+          {{ dataInstance.businessUnit }}
+        </td>
+        <td class="data-column">
+          {{ dataInstance.withUser }}
+        </td>
+        <td class="data-column">
+          <app-delaybadge [day]="dataInstance.delay" />
+        </td>
+        <td class="data-column">
+          <app-statusbadge [status]="dataInstance.status"/>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
